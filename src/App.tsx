@@ -1,9 +1,12 @@
-import React, { useState, createContext, useReducer } from 'react';
+import React, { useState, createContext, useReducer, useEffect } from 'react';
 import './App.css';
 import { Content } from './components/Content/Content';
 import { Languages, allLanguages } from './languages';
 import { Cards } from './components/Cards/Cards';
 import { Card } from './components/Card/Card';
+import axios from 'axios';
+import { A } from './components/A/A';
+import { B } from './components/B/B';
 
 
 export const LangContext = createContext<Languages>("it");
@@ -18,26 +21,26 @@ const reducer = (state: number, {type}: {type: 'next' | 'reset'}) => {
 
 
 function App() {
-
-  const [state, dispatch] = useReducer(reducer, 0);
   
   
-  const changeLang = () => {
-    dispatch({type: 'next'})
-  }
+  // const changeLang = () => {
+  //   dispatch({type: 'next'})
+  // }
 
   return (
     <div className="App">
+      {/* <A /> */}
+      <B />
         {/* {
           allLanguages.map(l => <><button onClick={() => changeLang(l)} >{l}</button><br /></>)
         } */}
-        <button onClick={changeLang}>{allLanguages[state]}</button>
+        {/* <button onClick={changeLang}>{allLanguages[state]}</button>
         <button onClick={() => dispatch({type: 'reset'})}>Reset</button>
         <LangContext.Provider value={allLanguages[state]}>
           <Content />
           <Cards />
           <Card />
-        </LangContext.Provider>
+        </LangContext.Provider> */}
     </div>
   );
 }
